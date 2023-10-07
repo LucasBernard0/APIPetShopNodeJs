@@ -2,9 +2,9 @@ const Cachorro = require("../models/cachorro")
 
 class RepositorioCachorro {
 
-    async GetCachorro(id) {
+    async GetCachorro(idCachorro) {
         return Cachorro.findOne({
-            where: { id }
+            where: { idCachorro }
         })
     }
 
@@ -19,18 +19,18 @@ class RepositorioCachorro {
         })
     }
 
-    async UpdateCachorro(id, nome, dono) {
+    async UpdateCachorro(idCachorro, nome, dono) {
         return Cachorro.update({
             nome: nome,
             dono: dono
         },{
-            where: { id }
+            where: { idCachorro }
         })
     }
 
-    async DeleteCachorro(id) {
+    async DeleteCachorro(idCachorro) {
         return Cachorro.destroy({
-            where: { id }
+            where: { idCachorro }
         })
     }
 }

@@ -2,9 +2,9 @@ const Cliente = require("../models/cliente")
 
 class RepositorioCliente {
 
-    async GetCliente(id) {
+    async GetCliente(idCliente) {
         return Cliente.findOne({
-            where: { id }
+            where: { idCliente }
         })
     }
 
@@ -19,18 +19,18 @@ class RepositorioCliente {
         })
     }
 
-    async UpdateCliente(id, nome, telefone) {
+    async UpdateCliente(idCliente, nome, telefone) {
         return Cliente.update({
             nome: nome,
             telefone: telefone
         },{
-            where: { id }
+            where: { idCliente }
         })
     }
 
-    async DeleteCliente(id) {
+    async DeleteCliente(idCliente) {
         return Cliente.destroy({
-            where: { id }
+            where: { idCliente }
         })
     }
 }

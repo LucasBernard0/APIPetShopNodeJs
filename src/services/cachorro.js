@@ -3,8 +3,8 @@ const repositorio = new RepositorioCachorro()
 
 class ServiceCachorro {
 
-    async GetCachorro(id) {
-        if(isNaN(id)) {
+    async GetCachorro(idCachorro) {
+        if(isNaN(idCachorro)) {
             throw new Error("Parâmetro Inválido!")
         }
         return repositorio.GetCachorro(id)
@@ -18,18 +18,18 @@ class ServiceCachorro {
         return repositorio.AddCachorro(nome, dono)
     }
 
-    async UpdateCachorro(id, nome, dono) {
-        if(isNaN(id)) {
+    async UpdateCachorro(idCachorro, nome, dono) {
+        if(isNaN(idCachorro)) {
             throw new Error("Parâmetro Inválido!")
         }
-        return repositorio.UpdateCachorro(id,nome,dono)
+        return repositorio.UpdateCachorro(idCachorro, nome, dono)
     }
 
-    async DeleteCachorro(id) {
-        if(isNaN(id)) {
+    async DeleteCachorro(idCachorro) {
+        if(isNaN(idCachorro)) {
             throw new Error("Parâmetro Inválido!")
         }
-        return repositorio.DeleteCachorro(id)
+        return repositorio.DeleteCachorro(idCachorro)
     }
 }
 
