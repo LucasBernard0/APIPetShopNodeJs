@@ -5,34 +5,31 @@ const repositorio = new RepositorioAtendimento;
 class ServiceAtendimento {
     
     async GetAtendimento(idAtendimentos) {
-        return repositorio.GetAtendimentos(idAtendimentos);
+        if(isNaN(idAtendimentos)){
+            throw new Error("Parâmetro Inválido!")
+        }
+        return repositorio.GetAtendimento(idAtendimentos)
     }
-
     async GetAtendimentos() {
         return repositorio.GetAtendimentos();
     }
 
     async AddAtendimento(diaehora, valor, idCachorro, conclusao) {
-        if(diaehora == "" || !valor || isNaN(idCachorro || conclusao == "")) {
-            throw new Error("Favor preencher todos os dados");
-        }
-        repositorio.AddAtendimento(diaehora, valor, idCachorro, conclusao);
+        return repositorio.AddAtendimento(diaehora, valor, idCachorro, conclusao)
     }
 
-    async UpdateAtendimento(idAtendimentos, conclusao) {
-        if(conclusao == "") {
-            throw new Error("Favor preencher todos os dados");
-        }else if(idAtendimentos < 0 || isNaN(idAtendimentos)) {
-            throw new Error("Favor preencher corretamente o id");
+    async UpdateAtendimento(idAtendimentos, dataehora, conclusao, idCachorro) {
+        if(isNaN(idAtendimentos)){
+            throw new Error("Parâmetro Inválido!")
         }
-        repositorio.UpdateAtendimento(idAtendimentos, conclusao);
+        return repositorio.UpdateAtendimento(idAtendimentos, dataehora, conclusao, idCachorro)
     }
 
     async DeleteAtendimento(idAtendimentos) {
-        if(idAtendimentos < 0 || isNaN(idAtendimentos)) {
-            throw new Error("Favor preencher corretamente o id");
+        if(isNaN(idAtendimentos)){
+            throw new Error("Parâmetro Inválido!")
         }
-        repositorio.DeleteAtendimento(idAtendimentos);
+        return repositorio.DeleteAtendimento(idAtendimentos)
     }
 }
 

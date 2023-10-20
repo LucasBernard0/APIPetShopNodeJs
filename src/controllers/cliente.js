@@ -6,13 +6,11 @@ class ControllerCliente {
         try {
             const resultado = await service.GetCliente(req.params.id)
             res.status(200).json({
-                cliente: resultado
+                nome: resultado
             })
         } catch (error) {
             console.log(error)
-            res.status(500).json({
-                message: error
-            })
+            res.status(500).json({ message: "Erro ao pegar um nome" })
         }
     }
 
@@ -20,13 +18,11 @@ class ControllerCliente {
         try {
             const resultado = await service.GetClientes()
             res.status(200).json({
-                clientes: resultado
+                nomes: resultado
             })
         } catch (error) {
             console.log(error)
-            res.status(500).json({
-                message: error
-            })
+            res.status(500).json({ message: "Erro ao listar nomes" })
         }
     }
 
@@ -34,41 +30,39 @@ class ControllerCliente {
         try {
             const resultado = await service.AddCliente(req.body.nome, req.body.telefone)
             res.status(200).json({
-                clientes: resultado
+                message: "Adicionado com sucesso",
             })
         } catch (error) {
             console.log(error)
-            res.status(500).json({
-                message: error
-            })
+            res.status(500).json({ message: error })
         }
     }
 
     async UpdateCliente(req,res) {
         try {
-            const resultado = await service.UpdateCliente(req.params.id, req.body.nome, req.body.telefone)
-            res.status(200).json({
-                cliente: resultado
-            })
-        } catch (error) {
-            console.log(error)
-            res.status(500).json({
-                message: error
-            })
-        }
+            service.UpdateCliente(
+                req.params.id,
+                req.body.nome,
+                req.body.telefone
+              )
+        
+              res.status(200).json({
+                message: "Alterado com sucesso",
+              })
+            } catch (error) {
+              res.status(500).json({ message: "Erro ao alterar" })
+            }
     }
 
     async DeleteCliente(req,res) {
         try {
             const resultado = await service.DeleteCliente(req.params.id)
             res.status(200).json({
-                cliente: resultado
+                message: "Deletado com sucesso"
             })
         } catch (error) {
             console.log(error)
-            res.status(500).json({
-                message: error
-            })
+            res.status(500).json({ message: "Erro ao deletar" })
         }
     }
 }

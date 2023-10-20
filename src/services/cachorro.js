@@ -14,15 +14,15 @@ class ServiceCachorro {
         return repositorio.GetCachorros()
     }
 
-    async AddCachorro(nome, dono) {
-        return repositorio.AddCachorro(nome, dono)
+    async AddCachorro(nome, idCliente) {
+        return repositorio.AddCachorro(nome, idCliente)
     }
 
-    async UpdateCachorro(idCachorro, nome, dono) {
+    async UpdateCachorro(idCachorro, nome, idCliente) {
         if(isNaN(idCachorro)) {
             throw new Error("Parâmetro Inválido!")
         }
-        return repositorio.UpdateCachorro(idCachorro, nome, dono)
+        return repositorio.UpdateCachorro(idCachorro, nome, idCliente)
     }
 
     async DeleteCachorro(idCachorro) {

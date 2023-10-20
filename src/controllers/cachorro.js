@@ -46,16 +46,20 @@ class ControllerCachorro{
 
     async UpdateCachorro(req,res) {
         try {
-            const resultado = await service.UpdateCachorro(req.params.id, req.body.nome, req.body.dono)
-            res.status(200).json({
-                cliente: resultado
-            })
-        } catch (error) { 
-            console.log(error)
-            res.status(500).json({
+            const resultado = await service.UpdateCachorro(
+                req.params.id,
+                req.body.nome,
+                req.body.dono
+              );
+              res.status(200).json({
+                cachorro: resultado,
+              });
+            } catch {
+              console.log(error);
+              res.status(500).json({
                 message: error
-            })
-        }
+              })
+            }
     }
 
     async DeleteCachorro(req,res) {

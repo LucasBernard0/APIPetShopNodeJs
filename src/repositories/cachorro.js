@@ -1,10 +1,12 @@
 const Cachorro = require("../models/cachorro")
+const Atendimento = require("../models/atendimento")
 
 class RepositorioCachorro {
 
-    async GetCachorro(idCachorro) {
+    async GetCachorro(id) {
         return Cachorro.findOne({
-            where: { idCachorro }
+            where: { id },
+            include: [ Atendimento ]
         })
     }
 
@@ -14,23 +16,22 @@ class RepositorioCachorro {
 
     async AddCachorro(nome, dono) {
         return Cachorro.create({
-            nome: nome,
-            dono: dono
+            nome,
+            dono
         })
     }
 
-    async UpdateCachorro(idCachorro, nome, dono) {
+    async UpdateCachorro(id, nome) {
         return Cachorro.update({
-            nome: nome,
-            dono: dono
+            nome
         },{
-            where: { idCachorro }
+            where: { id }
         })
     }
 
-    async DeleteCachorro(idCachorro) {
+    async DeleteCachorro(id) {
         return Cachorro.destroy({
-            where: { idCachorro }
+            where: { id }
         })
     }
 }

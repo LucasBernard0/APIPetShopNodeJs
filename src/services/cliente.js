@@ -1,13 +1,14 @@
+const Cliente = require("../models/cliente")
 const RepositorioCliente = require("../repositories/cliente")
 const repositorio = new RepositorioCliente()
 
 class ServiceCliente {
 
-    async GetCliente(idCliente) {
+    async GetCliente(idCliente, transaction) {
         if(isNaN(idCliente)){
             throw new Error("Parâmetro Inválido!")
         }
-        return repositorio.GetCliente(id)
+        return repositorio.GetCliente(idCliente, transaction)
     }
 
     async GetClientes() {
@@ -18,18 +19,25 @@ class ServiceCliente {
         return repositorio.AddCliente(nome, telefone)
     }
 
-    async UpdateCliente(idCliente, nome, telefone) {
-        if(isNaN(idCliente)) {
+    async UpdateCliente(id, nome, telefone) {
+        if(isNaN(id)) {
             throw new Error("Parâmetro Inválido!")
         }
         return repositorio.UpdateCliente(id, nome, telefone)
     }
 
-    async DeleteCliente(idCliente) {
-        if(isNaN(idCliente)) {
+    async DeleteCliente(id) {
+        if(isNaN(id)) {
             throw new Error("Parâmetro Inválido!")
         }
-        return repositorio.DeleteCliente(idCliente)
+        return repositorio.DeleteCliente(id)
+    }
+
+    async GetCachorrosCliente(idCliente){
+        if(isNaN(idCliente)){
+            throw new Error("Parâmetro Inválido!")
+        }
+        return Cliente.GetCachorrosCliente(idCliente)
     }
 }
 
