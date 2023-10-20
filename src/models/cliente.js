@@ -3,6 +3,7 @@ const { DataTypes } = require("sequelize");
 
 const Cliente = sequelize.define("clientes", {
     id: {
+        field: "idCliente",
         primaryKey: true,
         autoIncrement: true,
         type: DataTypes.INTEGER
