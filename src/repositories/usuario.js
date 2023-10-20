@@ -1,11 +1,11 @@
-const Usuario = require('../models/usuario')
-const bcrypt = require('bcrypt')
+const Usuario = require("../models/usuario")
+const bcrypt = require("bcrypt")
 
 class RepositorioUsuario{
 
-    async GetUsuario(usuario_id, transaction){
+    async GetUsuario(idUsuario, transaction){
         return Usuario.findOne({
-            where: { usuario_id },
+            where: { idUsuario },
             transaction
         })
     }
@@ -35,13 +35,13 @@ class RepositorioUsuario{
             email: email,
             senha: senha
         },{
-            where: { usuario_id: id }
+            where: { idUsuario: id }
         })
     }
 
     async DeleteUsuario(id){
         return Usuario.destroy({
-            where: { usuario_id: id }
+            where: { idUsuario: id }
         })
     }
 }

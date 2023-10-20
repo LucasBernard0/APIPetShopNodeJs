@@ -1,13 +1,13 @@
-const RepositorioUsuario = require('../repositories/usuario');
+const RepositorioUsuario = require("../repositories/usuario");
 const usuario = new RepositorioUsuario();
 
 class ServiceUsuario{
 
-    async GetUsuario(usuario_id, transaction){
-        if(isNaN(usuario_id)){
+    async GetUsuario(idUsuario, transaction){
+        if(isNaN(idUsuario)){
             throw new Error("Parâmetro Inválido!");
         }
-        return usuario.GetUsuario(usuario_id, transaction);
+        return usuario.GetUsuario(idUsuario, transaction);
     }
 
     async GetUsuarioPorEmail(email){

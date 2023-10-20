@@ -3,7 +3,7 @@ const sequelize = require("../database");
 const Cliente = require("./cliente")
 
 const Usuario = sequelize.define("usuarios", {
-    usuario_id: {
+    idUsuario: {
         field: "idUsuario",
         primaryKey: true,
         autoIncrement: true,
@@ -28,5 +28,5 @@ const Usuario = sequelize.define("usuarios", {
     updatedAt: false
 })
 
-Usuario.hasOne(Cliente, { foreignKey: 'idUsuario' })
+Usuario.hasOne(Cliente, { foreignKey: "idUsuario" })
 module.exports = Usuario;
