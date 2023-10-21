@@ -1,10 +1,9 @@
-const { DataTypes } = require("sequelize");
-const sequelize = require("../database");
-const Cliente = require("./cliente")
+const { DataTypes } = require('sequelize');
+const sequelize = require('../database');
 
-const Usuario = sequelize.define("usuarios", {
-    idUsuario: {
-        field: "idUsuario",
+const Usuario = sequelize.define('usuarios', {
+    idUsuarios: {
+        field: 'idUsuarios',
         primaryKey: true,
         autoIncrement: true,
         type: DataTypes.INTEGER
@@ -12,7 +11,8 @@ const Usuario = sequelize.define("usuarios", {
 
     email: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
 
     senha: {
@@ -28,5 +28,4 @@ const Usuario = sequelize.define("usuarios", {
     updatedAt: false
 })
 
-Usuario.hasOne(Cliente, { foreignKey: "idUsuario" })
 module.exports = Usuario;
